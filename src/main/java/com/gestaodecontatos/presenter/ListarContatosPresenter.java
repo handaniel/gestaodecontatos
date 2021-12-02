@@ -8,6 +8,8 @@ import java.util.ListIterator;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -41,10 +43,25 @@ public class ListarContatosPresenter {
         view.getBtnExcluir().addActionListener((ActionEvent ae) -> {
             excluir();
         });
-        //view.getCkbOrdenarTelefone().get
-
+        
+        view.getCkbOrdenarTelefone().addActionListener((ActionEvent ae) -> {
+            ordenaTelefone();
+        });
+        
         view.setLocationRelativeTo(view.getParent());
         view.setVisible(true);
+        
+    }
+    
+    private void ordenaTelefone() {
+        TableRowSorter sorter = new TableRowSorter(tmContatos);
+        view.getTblContatos().setRowSorter(sorter);
+        
+        if (view.getCkbOrdenarTelefone().isSelected()) {
+            sorter.toggleSortOrder(1);
+        } else {
+            sorter.toggleSortOrder(0);
+        }
         
     }
     
