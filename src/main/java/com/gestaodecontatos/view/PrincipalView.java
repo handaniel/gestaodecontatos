@@ -110,7 +110,6 @@ public class PrincipalView extends javax.swing.JFrame {
         this.btnNovoContato = btnNovoContato;
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnFechar;
     private javax.swing.JMenuItem btnListarContatos;

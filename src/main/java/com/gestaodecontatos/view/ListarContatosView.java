@@ -171,7 +171,6 @@ public class ListarContatosView extends javax.swing.JFrame {
         this.tblContatos = tblContatos;
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;

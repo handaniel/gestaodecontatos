@@ -14,7 +14,10 @@ public class ContatoCollection implements Serializable {
 
     public ContatoCollection() {
         contatos = new ArrayList<>();
+    }
 
+    public ContatoCollection(ArrayList<Contato> contatos) {
+        this.contatos = contatos;
     }
 
     public void add(Contato contato) {
@@ -30,6 +33,10 @@ public class ContatoCollection implements Serializable {
 
     public ArrayList<Contato> getContatos() {
         return contatos;
+    }
+
+    public void setContatos(ArrayList<Contato> contatos) {
+        this.contatos = contatos;
     }
 
 }

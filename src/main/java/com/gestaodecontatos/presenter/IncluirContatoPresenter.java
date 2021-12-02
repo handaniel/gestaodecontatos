@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author handaniels
  */
-public class IncluirContatosPresenter {
+public class IncluirContatoPresenter {
 
     private IncluirContatoView view;
     private ContatoCollection contatos;
 
-    public IncluirContatosPresenter(ContatoCollection contatos) {
+    public IncluirContatoPresenter(ContatoCollection contatos) {
         this.contatos = contatos;
         view = new IncluirContatoView();
 
