@@ -67,7 +67,7 @@ public class ListarContatosPresenter {
 
     private void updateView() {
         tmContatos.setRowCount(0);
-        
+
         view.getTblContatos().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         ListIterator<Contato> it = contatos.getContatos().listIterator();
@@ -101,13 +101,7 @@ public class ListarContatosPresenter {
                 + "\nNome: " + nome + "\nTelefone: " + telefone, "Exclusão", JOptionPane.YES_NO_OPTION);
 
         if (confirm == JOptionPane.YES_OPTION) {
-            Contato del = null;
-
-            for (Contato c : contatos.getContatos()) {
-                if (c.getNome().equals(nome) && c.getTelefone().equals(telefone)) {
-                    del = c;
-                }
-            }
+            Contato del = contatos.find(nome, telefone);
 
             contatos.getContatos().remove(del);
 

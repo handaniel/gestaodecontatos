@@ -3,6 +3,7 @@ package com.gestaodecontatos.collections;
 import com.gestaodecontatos.model.Contato;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,7 +22,8 @@ public class ContatoCollection implements Serializable {
     }
 
     public void add(Contato contato) {
-        if (contatos.contains(contato)) {
+        if (find(contato.getNome(), contato.getTelefone()) != null) {
+            JOptionPane.showMessageDialog(null, "Contato já existe!");
             throw new RuntimeException("Contato já existe!");
         }
         if (contato != null) {
@@ -29,6 +31,18 @@ public class ContatoCollection implements Serializable {
         } else {
             throw new RuntimeException("Forneça uma instância válida de um contato!");
         }
+    }
+
+    public Contato find(String nome, String telefone) {
+        if (nome != null && telefone != null) {
+            for (Contato c : contatos) {
+                if (c.getNome().equals(nome) && c.getTelefone().equals(telefone)) {
+                    return c;
+                }
+            }
+        }
+
+        return null;
     }
 
     public ArrayList<Contato> getContatos() {

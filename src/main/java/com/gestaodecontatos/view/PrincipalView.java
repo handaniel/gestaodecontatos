@@ -41,6 +41,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         jMenu1.setText("Opções");
 
+        btnNovoContato.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         btnNovoContato.setText("Novo contado");
         btnNovoContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,9 +50,11 @@ public class PrincipalView extends javax.swing.JFrame {
         });
         jMenu1.add(btnNovoContato);
 
+        btnListarContatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         btnListarContatos.setText("Listar contatos");
         jMenu1.add(btnListarContatos);
 
+        btnFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         btnFechar.setText("Fechar e salvar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

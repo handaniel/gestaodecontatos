@@ -4,6 +4,8 @@ import com.gestaodecontatos.collections.ContatoCollection;
 import com.gestaodecontatos.packer.Empacotador;
 import com.gestaodecontatos.view.PrincipalView;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 
 /**
@@ -29,11 +31,22 @@ public class PrincipalPresenter {
             System.err.println("Erro ao deserializar");
         }
 
-        botoes(view, contatos, arq);
+        init(view, contatos, arq);
 
     }
 
-    private static void botoes(PrincipalView view, ContatoCollection contatos, File arq) {
+    private static void init(PrincipalView view, ContatoCollection contatos, File arq) {
+
+        view.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                try {
+                    Empacotador.serializar(arq, contatos);
+                } catch (Exception ex) {
+                    System.err.println("Erro ao serializar!");
+                }
+            }
+        });
+
         view.getBtnNovoContato().addActionListener((ActionEvent ae) -> {
             adicionarContato(contatos);
         });
