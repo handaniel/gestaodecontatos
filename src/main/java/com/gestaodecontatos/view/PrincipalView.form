@@ -24,7 +24,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btnFechar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Fechar o sistema"/>
+                <Property name="text" type="java.lang.String" value="Fechar e salvar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharActionPerformed"/>

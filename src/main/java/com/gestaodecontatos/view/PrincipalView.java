@@ -52,7 +52,7 @@ public class PrincipalView extends javax.swing.JFrame {
         btnListarContatos.setText("Listar contatos");
         jMenu1.add(btnListarContatos);
 
-        btnFechar.setText("Fechar o sistema");
+        btnFechar.setText("Fechar e salvar");
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharActionPerformed(evt);
