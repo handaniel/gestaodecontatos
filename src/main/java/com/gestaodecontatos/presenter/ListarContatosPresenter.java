@@ -7,12 +7,13 @@ import java.awt.event.ActionEvent;
 import java.util.ListIterator;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author handaniels
+ * @author Daniel Hand Santiago
  */
 public class ListarContatosPresenter {
 
@@ -27,7 +28,19 @@ public class ListarContatosPresenter {
         tmContatos = new DefaultTableModel(
                 new Object[][]{},
                 new String[]{"Nome", "Telefone"}
-        );
+        ) {
+            @Override
+            public boolean isCellEditable(final int row, final int column) {
+                return false;
+            }
+        };
+
+        desabilitaBtn();
+
+        view.getTblContatos().getSelectionModel().addListSelectionListener((ListSelectionEvent lse) -> {
+            view.getBtnVisualizar().setEnabled(true);
+            view.getBtnExcluir().setEnabled(true);
+        });
 
         view.getBtnFechar().addActionListener((ActionEvent ae) -> {
             fechar();
@@ -35,14 +48,13 @@ public class ListarContatosPresenter {
 
         view.getBtnVisualizar().addActionListener((ActionEvent ae) -> {
             visualizar();
+            desabilitaBtn();
+
         });
 
         view.getBtnExcluir().addActionListener((ActionEvent ae) -> {
-            if (view.getTblContatos().getSelectedRowCount() != 0) {
-                excluir();
-            } else {
-                JOptionPane.showMessageDialog(view, "Selecione uma linha!");
-            }
+            excluir();
+            desabilitaBtn();
         });
 
         view.getCkbOrdenarTelefone().addActionListener((ActionEvent ae) -> {
@@ -65,16 +77,19 @@ public class ListarContatosPresenter {
 
     }
 
-    private void updateView() {
+    public void updateView() {
         tmContatos.setRowCount(0);
 
         view.getTblContatos().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        ListIterator<Contato> it = contatos.getContatos().listIterator();
+        if (!contatos.getContatos().isEmpty()) {
 
-        while (it.hasNext()) {
-            Contato contato = it.next();
-            tmContatos.addRow(new Object[]{contato.getNome(), contato.getTelefone()});
+            ListIterator<Contato> it = contatos.getContatos().listIterator();
+
+            while (it.hasNext()) {
+                Contato contato = it.next();
+                tmContatos.addRow(new Object[]{contato.getNome(), contato.getTelefone()});
+            }
         }
 
         view.getLblQuantidade().setText(Integer.toString(contatos.getContatos().size()));
@@ -89,6 +104,14 @@ public class ListarContatosPresenter {
     }
 
     private void visualizar() {
+        String nome = view.getTblContatos().getValueAt(view.getTblContatos().getSelectedRow(), 0).toString();
+        String telefone = view.getTblContatos().getValueAt(view.getTblContatos().getSelectedRow(), 1).toString();
+
+        Contato contato = contatos.find(nome, telefone);
+
+        new IncluirContatoPresenter(contatos, contato, "Visualizar contato", this);
+
+        updateView();
 
     }
 
@@ -108,6 +131,11 @@ public class ListarContatosPresenter {
             updateView();
         }
 
+    }
+
+    private void desabilitaBtn() {
+        view.getBtnVisualizar().setEnabled(false);
+        view.getBtnExcluir().setEnabled(false);
     }
 
 }
