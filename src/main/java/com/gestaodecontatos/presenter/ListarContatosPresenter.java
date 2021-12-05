@@ -109,7 +109,7 @@ public class ListarContatosPresenter {
 
         Contato contato = contatos.find(nome, telefone);
 
-        new IncluirContatoPresenter(contatos, contato, "Visualizar contato", this);
+        new ManterContatoPresenter(contatos, contato, "Visualizar contato", this);
 
         updateView();
 

@@ -2,7 +2,7 @@ package com.gestaodecontatos.presenter;
 
 import com.gestaodecontatos.collections.ContatoCollection;
 import com.gestaodecontatos.model.Contato;
-import com.gestaodecontatos.view.IncluirContatoView;
+import com.gestaodecontatos.view.ManterContatoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -11,14 +11,14 @@ import javax.swing.JOptionPane;
  *
  * @author Daniel Hand Santiago 2018200011
  */
-public class IncluirContatoPresenter {
+public class ManterContatoPresenter {
 
-    private IncluirContatoView view;
+    private ManterContatoView view;
     private ContatoCollection contatos;
 
-    public IncluirContatoPresenter(ContatoCollection contatos, String titulo) {
+    public ManterContatoPresenter(ContatoCollection contatos, String titulo) {
         this.contatos = contatos;
-        view = new IncluirContatoView();
+        view = new ManterContatoView();
         view.setTitle(titulo);
 
         view.getBtnFechar().addActionListener((ActionEvent ae) -> {
@@ -33,9 +33,9 @@ public class IncluirContatoPresenter {
         view.setVisible(true);
     }
 
-    public IncluirContatoPresenter(ContatoCollection contatos, Contato contato, String titulo, ListarContatosPresenter lcp) {
+    public ManterContatoPresenter(ContatoCollection contatos, Contato contato, String titulo, ListarContatosPresenter lcp) {
         this.contatos = contatos;
-        view = new IncluirContatoView();
+        view = new ManterContatoView();
 
         view.getBtnSalvar().setText("Editar");
         view.setTitle(titulo);

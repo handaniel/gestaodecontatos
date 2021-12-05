@@ -11,12 +11,12 @@ import javax.swing.JTextField;
  *
  * @author handaniels
  */
-public class IncluirContatoView extends javax.swing.JFrame {
+public class ManterContatoView extends javax.swing.JFrame {
 
     /**
      * Creates new form IncluirContatoView
      */
-    public IncluirContatoView() {
+    public ManterContatoView() {
         initComponents();
         this.setLocationRelativeTo(this.getParent());
     }
