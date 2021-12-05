@@ -93,6 +93,15 @@ public class IncluirContatoPresenter {
     private void salvar() {
         String nome = view.getTxtNome().getText();
         String telefone = view.getTxtTelefone().getText();
+        String padrao = "^\\([1-9]{2}\\)(?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}$";
+
+        if (nome.isBlank()) {
+            throw new RuntimeException("Nome inválido!");
+        }
+
+        if (!telefone.isBlank() && telefone.matches(padrao)) {
+            throw new RuntimeException("Telefone inválido!");
+        }
 
         Contato contato = new Contato(nome, telefone);
 
