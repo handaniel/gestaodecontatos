@@ -45,6 +45,13 @@ public class IncluirContatoView extends javax.swing.JFrame {
 
         lblTelefone.setText("Telefone");
 
+        txtTelefone.setText("(xx) xxxxx-xxxx");
+        txtTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefoneFocusGained(evt);
+            }
+        });
+
         btnFechar.setText("Fechar");
 
         btnSalvar.setText("Salvar");
@@ -90,6 +97,12 @@ public class IncluirContatoView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusGained
+        if (txtTelefone.getText().equals("(xx) xxxxx-xxxx")) {
+            txtTelefone.setText("");
+        }
+    }//GEN-LAST:event_txtTelefoneFocusGained
 
     public JButton getBtnFechar() {
         return btnFechar;
