@@ -39,8 +39,12 @@ public class ContatoCollection implements Serializable {
         }
         for (Contato c : this.contatos) {
             if (c.equals(antigo)) {
-                c.setNome(novo.getNome());
-                c.setTelefone(novo.getTelefone());
+                if (!antigo.getNome().equals(novo.getNome())) {
+                    c.setNome(novo.getNome());
+                }
+                if (!antigo.getTelefone().equals(novo.getTelefone())) {
+                    c.setTelefone(novo.getTelefone());
+                }
             }
         }
         ordena();

@@ -61,7 +61,7 @@ public class PrincipalPresenter {
     }
 
     private static void adicionarContato(ContatoCollection contatos) {
-        new ManterContatoPresenter(contatos, "Incluir contato");
+        new ManterContatoPresenter(contatos, "Inclusão de Pessoa");
     }
 
     private static void fechar(PrincipalView view, File arq, ContatoCollection contatos) {
